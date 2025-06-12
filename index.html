@@ -9,6 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <!-- Lightbox2 CSS & JS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
     <style>
         /* Pastikan ini dimuat SETELAH CSS Tailwind dan Swiper */
 
@@ -762,51 +764,72 @@
                 </div>
 
                 <div id="photos-gallery" class="gallery-content">
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="gallery-item bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg h-64 flex items-center justify-center text-white cursor-pointer hover:scale-105 transition-transform duration-300">
-                            <div class="text-center">
-                                <div class="text-4xl mb-2">📚</div>
-                                <p class="font-semibold">Program Beasiswa</p>
-                                <p class="text-sm text-blue-100">50 Siswa Berprestasi</p>
-                            </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="gallery-item bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg h-64 overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300">
+                        <a href="https://images.pexels.com/photos/256401/pexels-photo-256401.jpeg?auto=compress&w=1200" data-lightbox="gallery" data-title="Program Beasiswa untuk 50 Siswa Berprestasi">
+                            <img src="https://images.pexels.com/photos/256401/pexels-photo-256401.jpeg?auto=compress&w=300&h=200&fit=crop" alt="Program Beasiswa" class="w-full h-full object-cover">
+                        </a>
+                        <div class="text-center p-4 text-white">
+                            <p class="font-semibold">Program Beasiswa</p>
+                            <p class="text-sm text-blue-100">50 Siswa Berprestasi</p>
                         </div>
-                        <div class="gallery-item bg-gradient-to-br from-green-400 to-green-600 rounded-lg h-64 flex items-center justify-center text-white cursor-pointer hover:scale-105 transition-transform duration-300">
-                            <div class="text-center">
-                                <div class="text-4xl mb-2">🏗️</div>
-                                <p class="font-semibold">Pembangunan Sekolah</p>
-                                <p class="text-sm text-green-100">Desa Sumber Makmur</p>
-                            </div>
+                    </div>
+
+                    <div class="gallery-item bg-gradient-to-br from-green-400 to-green-600 rounded-lg h-64 overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300">
+                        <a href="https://images.pexels.com/photos/289738/pexels-photo-289738.jpeg?auto=compress&w=1200" data-lightbox="gallery" data-title="Pembangunan Sekolah di Desa Sumber Makmur">
+                            <img src="https://images.pexels.com/photos/289738/pexels-photo-289738.jpeg?auto=compress&w=300&h=200&fit=crop" alt="Pembangunan Sekolah" class="w-full h-full object-cover">
+                        </a>
+                        <div class="text-center p-4 text-white">
+                            <p class="font-semibold">Pembangunan Sekolah</p>
+                            <p class="text-sm text-green-100">Desa Sumber Makmur</p>
                         </div>
-                        <div class="gallery-item bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg h-64 flex items-center justify-center text-white cursor-pointer hover:scale-105 transition-transform duration-300">
-                            <div class="text-center">
-                                <div class="text-4xl mb-2">🎭</div>
-                                <p class="font-semibold">Festival Budaya</p>
-                                <p class="text-sm text-purple-100">Pelestarian Tradisi</p>
-                            </div>
+                    </div>
+
+                    <div class="gallery-item bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg h-64 overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300">
+                        <a href="https://images.pexels.com/photos/461940/pexels-photo-461940.jpeg?auto=compress&w=1200" data-lightbox="gallery" data-title="Festival Budaya: Pelestarian Tradisi Lokal">
+                            <img src="https://images.pexels.com/photos/461940/pexels-photo-461940.jpeg?auto=compress&w=300&h=200&fit=crop" alt="Festival Budaya" class="w-full h-full object-cover">
+                        </a>
+                        <div class="text-center p-4 text-white">
+                            <p class="font-semibold">Festival Budaya</p>
+                            <p class="text-sm text-purple-100">Pelestarian Tradisi</p>
                         </div>
-                        <div class="gallery-item bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg h-64 flex items-center justify-center text-white cursor-pointer hover:scale-105 transition-transform duration-300">
-                            <div class="text-center">
-                                <div class="text-4xl mb-2">💼</div>
-                                <p class="font-semibold">Pelatihan UMKM</p>
-                                <p class="text-sm text-yellow-100">Keterampilan Wirausaha</p>
-                            </div>
+                    </div>
+
+                    <div class="gallery-item bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg h-64 overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300">
+                        <a href="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&w=1200" data-lightbox="gallery" data-title="Pelatihan UMKM untuk Keterampilan Wirausaha">
+                            <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&w=300&h=200&fit=crop" alt="Pelatihan UMKM" class="w-full h-full object-cover">
+                        </a>
+                        <div class="text-center p-4 text-white">
+                            <p class="font-semibold">Pelatihan UMKM</p>
+                            <p class="text-sm text-yellow-100">Keterampilan Wirausaha</p>
                         </div>
-                        <div class="gallery-item bg-gradient-to-br from-red-400 to-pink-500 rounded-lg h-64 flex items-center justify-center text-white cursor-pointer hover:scale-105 transition-transform duration-300">
-                            <div class="text-center">
-                                <div class="text-4xl mb-2">🏥</div>
-                                <p class="font-semibold">Program Kesehatan</p>
-                                <p class="text-sm text-red-100">Pelayanan Gratis</p>
-                            </div>
+                    </div>
+
+                    <div class="gallery-item bg-gradient-to-br from-red-400 to-pink-500 rounded-lg h-64 overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300">
+                        <a href="https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&w=1200" data-lightbox="gallery" data-title="Program Kesehatan: Pelayanan Medis Gratis">
+                            <img src="https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&w=300&h=200&fit=crop" alt="Program Kesehatan" class="w-full h-full object-cover">
+                        </a>
+                        <div class="text-center p-4 text-white">
+                            <p class="font-semibold">Program Kesehatan</p>
+                            <p class="text-sm text-red-100">Pelayanan Gratis</p>
                         </div>
-                        <div class="gallery-item bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-lg h-64 flex items-center justify-center text-white cursor-pointer hover:scale-105 transition-transform duration-300">
-                            <div class="text-center">
-                                <div class="text-4xl mb-2">🌱</div>
-                                <p class="font-semibold">Pertanian Organik</p>
-                                <p class="text-sm text-indigo-100">Ramah Lingkungan</p>
-                            </div>
+                    </div>
+
+                    <div class="gallery-item bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-lg h-64 overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300">
+                        <a href="https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=1200" data-lightbox="gallery" data-title="Pertanian Organik: Inisiatif Ramah Lingkungan">
+                            <img src="https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=300&h=200&fit=crop" alt="Pertanian Organik" class="w-full h-full object-cover">
+                        </a>
+                        <div class="text-center p-4 text-white">
+                            <p class="font-semibold">Pertanian Organik</p>
+                            <p class="text-sm text-indigo-100">Ramah Lingkungan</p>
                         </div>
                     </div>
                 </div>
+            </div>
+
+
+
+            
 
                 <div id="videos-gallery" class="gallery-content hidden">
                     <div class="grid md:grid-cols-2 gap-8">
@@ -1551,5 +1574,8 @@
        
 
     </script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 </body>
 </html>
