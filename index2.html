@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yayasan Ulayat Nagari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .section-bg {
+            background: linear-gradient(45deg, #f3f4f6 0%, #e5e7eb 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            opacity: 0.8;
+            background-clip: text;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .nav-active {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+        }
+        .hidden-section {
+            display: none;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #667eea;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-lg z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">YUN</span>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-800">Yayasan Ulayat Nagari</h1>
+                        <p class="text-sm text-gray-600">Membangun Masa Depan Bersama</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" onclick="showSection('home')" class="nav-link nav-active px-3 py-2 text-gray-700 hover:text-blue-600 transition duration-300">Beranda</a>
+                    <a href="#" onclick="showSection('about')" class="nav-link px-3 py-2 text-gray-700 hover:text-blue-600 transition duration-300">Tentang Kami</a>
+                    <a href="#" onclick="showSection('programs')" class="nav-link px-3 py-2 text-gray-700 hover:text-blue-600 transition duration-300">Program</a>
+                    <a href="#" onclick="showSection('gallery')" class="nav-link px-3 py-2 text-gray-700 hover:text-blue-600 transition duration-300">Galeri</a>
+                    <a href="#" onclick="showSection('news')" class="nav-link px-3 py-2 text-gray-700 hover:text-blue-600 transition duration-300">Berita</a>
+                    <a href="#" onclick="showSection('contact')" class="nav-link px-3 py-2 text-gray-700 hover:text-blue-600 transition duration-300">Kontak</a>
+                    <a href="#" onclick="showSection('donation')" class="nav-link px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">Donasi</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-2">
+                    <a href="#" onclick="showSection('home')" class="mobile-nav-link block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">Beranda</a>
+                    <a href="#" onclick="showSection('about')" class="mobile-nav-link block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">Tentang Kami</a>
+                    <a href="#" onclick="showSection('programs')" class="mobile-nav-link block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">Program</a>
+                    <a href="#" onclick="showSection('gallery')" class="mobile-nav-link block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">Galeri</a>
+                    <a href="#" onclick="showSection('news')" class="mobile-nav-link block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">Berita</a>
+                    <a href="#" onclick="showSection('contact')" class="mobile-nav-link block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">Kontak</a>
+                    <a href="#" onclick="showSection('donation')" class="mobile-nav-link block px-3 py-2 bg-blue-600 text-white rounded">Donasi</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-20">
+        <section id="home" class="section">
+            <div class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+                <div class="container mx-auto px-4 text-center text-white relative z-10">
+                    <h1 class="hero-title text-4xl md:text-6xl font-bold mb-6 opacity-0">
+                        Membangun Masa Depan<br>
+                        <span class="text-gradient bg-white bg-clip-text">Bersama Masyarakat</span>
+                    </h1>
+                    <p class="hero-subtitle text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-0">
+                        Yayasan Ulayat Nagari berkomitmen untuk memberdayakan masyarakat melalui program pendidikan, 
+                        pembangunan infrastruktur, dan pelestarian budaya lokal.
+                    </p>
+                    <div class="hero-buttons space-x-4 opacity-0">
+                        <button onclick="showSection('about')" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+                            Pelajari Lebih Lanjut
+                        </button>
+                        <button onclick="showSection('donation')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300 transform hover:scale-105">
+                            Donasi Sekarang
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="absolute inset-0 overflow-hidden">
+                    <div class="floating-element absolute top-20 left-10 w-20 h-20 bg-white bg-opacity-10 rounded-full"></div>
+                    <div class="floating-element absolute top-40 right-20 w-16 h-16 bg-white bg-opacity-10 rounded-full"></div>
+                    <div class="floating-element absolute bottom-40 left-20 w-24 h-24 bg-white bg-opacity-10 rounded-full"></div>
+                    <div class="floating-element absolute bottom-20 right-10 w-12 h-12 bg-white bg-opacity-10 rounded-full"></div>
+                </div>
+            </div>
+
+            <div class="section-bg py-16">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Tentang Yayasan Ulayat Nagari</h2>
+                        <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="about-content">
+                            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                                Yayasan Ulayat Nagari didirikan dengan semangat untuk memajukan kehidupan masyarakat 
+                                melalui pendekatan yang berkelanjutan dan partisipatif. Kami percaya bahwa perubahan 
+                                positif dimulai dari komunitas lokal yang kuat.
+                            </p>
+                            <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                                Dengan fokus pada pendidikan, pemberdayaan ekonomi, dan pelestarian budaya, 
+                                kami bekerja bersama masyarakat untuk menciptakan dampak yang nyata dan berkelanjutan.
+                            </p>
+                            <button onclick="showSection('about')" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                                Selengkapnya
+                            </button>
+                        </div>
+                        <div class="about-image">
+                            <div class="bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg p-8 text-white text-center">
+                                <div class="text-4xl mb-4">🏛️</div>
+                                <h3 class="text-xl font-bold mb-2">15+ Tahun</h3>
+                                <p>Mengabdi untuk Masyarakat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-16">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Berita Terbaru</h2>
+                        <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Ikuti perkembangan terbaru kegiatan dan pencapaian Yayasan Ulayat Nagari.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <article class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                            <div class="bg-gradient-to-r from-blue-100 to-blue-200 h-48 flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&auto=format" 
+                                     alt="Pendidikan"
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">PENDIDIKAN</span>
+                                <h3 class="font-bold text-lg mt-2 mb-2">Penyaluran Beasiswa Tahap II untuk Siswa Berprestasi</h3>
+                                <p class="text-gray-600 text-sm mb-3">20 Mei 2025</p>
+                                <p class="text-gray-700 text-sm">
+                                    Yayasan Ulayat Nagari kembali menyalurkan beasiswa kepada 75 siswa berprestasi di wilayah pedesaan...
+                                </p>
+                                <a href="#" onclick="showSection('news')" class="text-blue-600 hover:text-blue-800 font-semibold text-sm mt-3 inline-block">Baca Selengkapnya →</a>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                            <div class="bg-gradient-to-r from-green-100 to-green-200 h-48 flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=500&auto=format" 
+                                     alt="Agriculture"
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">EKONOMI</span>
+                                <h3 class="font-bold text-lg mt-2 mb-2">Workshop Peningkatan Kualitas Produk UMKM Lokal</h3>
+                                <p class="text-gray-600 text-sm mb-3">18 Mei 2025</p>
+                                <p class="text-gray-700 text-sm">
+                                    Puluhan pelaku UMKM antusias mengikuti pelatihan inovasi produk dan standarisasi kualitas...
+                                </p>
+                                <a href="#" onclick="showSection('news')" class="text-blue-600 hover:text-blue-800 font-semibold text-sm mt-3 inline-block">Baca Selengkapnya →</a>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                            <div class="h-48 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1601643157091-ce5c665179ab?w=500&auto=format" 
+                                     alt="Traditional Culture"
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">BUDAYA</span>
+                                <h3 class="font-bold text-lg mt-2 mb-2">Kolaborasi Seni Tradisional: Pergelaran Wayang Kulit</h3>
+                                <p class="text-gray-600 text-sm mb-3">15 Mei 2025</p>
+                                <p class="text-gray-700 text-sm">
+                                    Yayasan bekerja sama dengan seniman lokal menggelar pergelaran wayang kulit untuk melestarikan...
+                                </p>
+                                <a href="#" onclick="showSection('news')" class="text-blue-600 hover:text-blue-800 font-semibold text-sm mt-3 inline-block">Baca Selengkapnya →</a>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                            <div class="h-48 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?w=500&auto=format" 
+                                     alt="Innovation"
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">INOVASI</span>
+                                <h3 class="font-bold text-lg mt-2 mb-2">Peluncuran Aplikasi "Nagari Digital" untuk Pelayanan Masyarakat</h3>
+                                <p class="text-gray-600 text-sm mb-3">12 Mei 2025</p>
+                                <p class="text-gray-700 text-sm">
+                                    Memperkenalkan inovasi terbaru, aplikasi mobile untuk memudahkan akses informasi dan layanan yayasan...
+                                </p>
+                                <a href="#" onclick="showSection('news')" class="text-blue-600 hover:text-blue-800 font-semibold text-sm mt-3 inline-block">Baca Selengkapnya →</a>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                            <div class="h-48 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=500&auto=format" 
+                                     alt="Healthcare"
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">KESEHATAN</span>
+                                <h3 class="font-bold text-lg mt-2 mb-2">Program Kesehatan Gratis bagi Lansia di Desa Terpencil</h3>
+                                <p class="text-gray-600 text-sm mb-3">10 Mei 2025</p>
+                                <p class="text-gray-700 text-sm">
+                                    Tim medis Yayasan menyelenggarakan pemeriksaan kesehatan dan pembagian obat gratis di desa-desa terpencil...
+                                </p>
+                                <a href="#" onclick="showSection('news')" class="text-blue-600 hover:text-blue-800 font-semibold text-sm mt-3 inline-block">Baca Selengkapnya →</a>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                            <div class="h-48 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&auto=format" 
+                                     alt="Environment Nature"
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full">LINGKUNGAN</span>
+                                <h3 class="font-bold text-lg mt-2 mb-2">Inisiatif Penanaman 1000 Pohon di Kawasan Hutan Lindung</h3>
+                                <p class="text-gray-600 text-sm mb-3">8 Mei 2025</p>
+                                <p class="text-gray-700 text-sm">
+                                    Relawan Yayasan bersama masyarakat setempat sukses menanam ribuan pohon sebagai upaya konservasi lingkungan...
+                                </p>
+                                <a href="#" onclick="showSection('news')" class="text-blue-600 hover:text-blue-800 font-semibold text-sm mt-3 inline-block">Baca Selengkapnya →</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="text-center mt-12">
+                        <button onclick="showSection('news')" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                            Lihat Semua Berita
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-bg py-16">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Agenda, Foto & Video</h2>
+                        <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Ikuti jadwal kami, dan jelajahi momen-momen berharga melalui galeri visual.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                            <div class="text-center text-4xl mb-4">🗓️</div>
+                            <h3 class="font-bold text-xl text-gray-800 mb-3 text-center">Agenda Mendatang</h3>
+                            <ul class="text-gray-700 space-y-3">
+                                <li class="border-b pb-2 last:border-b-0">
+                                    <span class="font-semibold text-blue-600">25 Juni 2025:</span> Pelatihan Kewirausahaan Desa
+                                </li>
+                                <li class="border-b pb-2 last:border-b-0">
+                                    <span class="font-semibold text-blue-600">10 Juli 2025:</span> Bakti Sosial Kesehatan Gratis
+                                </li>
+                                <li class="border-b pb-2 last:border-b-0">
+                                    <span class="font-semibold text-blue-600">5 Agustus 2025:</span> Festival Budaya Tahunan Nagari
+                                </li>
+                            </ul>
+                            <div class="text-center mt-6">
+                                <button onclick="showSection('news')" class="text-blue-600 hover:underline font-semibold">Lihat Semua Agenda →</button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                            <div class="text-center text-4xl mb-4">📸</div>
+                            <h3 class="font-bold text-xl text-gray-800 mb-3 text-center">Foto Kegiatan</h3>
+                            <div class="grid grid-cols-2 gap-4 mb-4">
+                                <div class="bg-blue-200 h-24 rounded-lg flex items-center justify-center text-gray-600 text-sm">Gambar 1</div>
+                                <div class="bg-green-200 h-24 rounded-lg flex items-center justify-center text-gray-600 text-sm">Gambar 2</div>
+                                <div class="bg-purple-200 h-24 rounded-lg flex items-center justify-center text-gray-600 text-sm">Gambar 3</div>
+                                <div class="bg-yellow-200 h-24 rounded-lg flex items-center justify-center text-gray-600 text-sm">Gambar 4</div>
+                            </div>
+                            <div class="text-center">
+                                <button onclick="showSection('gallery')" class="text-blue-600 hover:underline font-semibold">Lihat Galeri Foto →</button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                            <div class="text-center text-4xl mb-4">🎥</div>
+                            <h3 class="font-bold text-xl text-gray-800 mb-3 text-center">Video Dokumentasi</h3>
+                            <div class="bg-gray-900 h-48 rounded-lg flex items-center justify-center text-white text-lg mb-4">
+                                <span class="text-5xl">▶️</span>
+                                <p class="absolute text-sm">Video Profil Singkat</p>
+                            </div>
+                            <div class="text-center">
+                                <button onclick="showSection('gallery')" class="text-blue-600 hover:underline font-semibold">Lihat Semua Video →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-blue-600 text-white py-16">
+                <div class="container mx-auto px-4 text-center">
+                    <h2 class="text-3xl font-bold mb-4">Mari Bergabung Dengan Kami</h2>
+                    <p class="text-xl mb-8 max-w-2xl mx-auto">
+                        Bersama-sama kita dapat menciptakan perubahan positif yang berkelanjutan untuk masa depan yang lebih baik.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="showSection('donation')" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                            Donasi
+                        </button>
+                        <button onclick="showSection('contact')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300">
+                            Jadi Relawan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section hidden-section">
+            <div class="container mx-auto px-4 py-16">
+                <div class="mb-16">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Sejarah Yayasan</h2>
+                    <div class="max-w-4xl mx-auto">
+                        <div class="bg-white rounded-lg shadow-lg p-8">
+                            <div class="grid md:grid-cols-2 gap-8 items-center">
+                                <div>
+                                    <h3 class="text-xl font-bold text-blue-600 mb-4">Awal Mula (2008)</h3>
+                                    <p class="text-gray-700 mb-4">
+                                        Yayasan Ulayat Nagari didirikan oleh sekelompok akademisi dan aktivis sosial 
+                                        yang peduli terhadap kondisi masyarakat di daerah pedesaan. Berawal dari 
+                                        keprihatinan terhadap minimnya akses pendidikan dan kesempatan ekonomi.
+                                    </p>
+                                    <h3 class="text-xl font-bold text-blue-600 mb-4">Perkembangan (2010-2020)</h3>
+                                    <p class="text-gray-700">
+                                        Dalam dekade pertama, yayasan telah berhasil melaksanakan berbagai program 
+                                        pemberdayaan masyarakat, membangun fasilitas pendidikan, dan menciptakan 
+                                        peluang ekonomi bagi ribuan keluarga.
+                                    </p>
+                                </div>
+                                <div class="timeline-visual bg-gradient-to-b from-blue-100 to-purple-100 rounded-lg p-6">
+                                    <div class="space-y-4">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-4 h-4 bg-blue-600 rounded-full"></div>
+                                            <span class="font-semibold">2008 - Pendirian</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+                                            <span class="font-semibold">2010 - Program Pertama</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-4 h-4 bg-blue-400 rounded-full"></div>
+                                            <span class="font-semibold">2015 - Ekspansi Regional</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-4 h-4 bg-blue-300 rounded-full"></div>
+                                            <span class="font-semibold">2020 - Era Digital</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-4 h-4 bg-blue-600 rounded-full animate-pulse"></div>
+                                            <span class="font-semibold">2025 - Inovasi Berkelanjutan</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-16">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-blue-50 rounded-lg p-8 card-hover">
+                            <div class="text-center mb-6">
+                                <div class="text-4xl mb-4">👁️</div>
+                                <h3 class="text-2xl font-bold text-blue-600">Visi</h3>
+                            </div>
+                            <p class="text-gray-700 leading-relaxed text-center">
+                                Menjadi yayasan terdepan dalam pemberdayaan masyarakat yang berkelanjutan, 
+                                menciptakan komunitas yang mandiri, sejahtera, dan berbudaya di seluruh nusantara.
+                            </p>
+                        </div>
+                        <div class="bg-purple-50 rounded-lg p-8 card-hover">
+                            <div class="text-center mb-6">
+                                <div class="text-4xl mb-4">🎯</div>
+                                <h3 class="text-2xl font-bold text-purple-600">Misi</h3>
+                            </div>
+                            <ul class="text-gray-700 space-y-2">
+                                <li>• Menyelenggarakan program pendidikan berkualitas</li>
+                                <li>• Memberdayakan ekonomi masyarakat lokal</li>
+                                <li>• Melestarikan budaya dan kearifan lokal</li>
+                                <li>• Membangun infrastruktur komunitas</li>
+                                <li>• Mengembangkan kapasitas sumber daya manusia</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-16">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Struktur Organisasi & Tim Kami</h2>
+                    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Struktur Organisasi</h3>
+                        <div class="flex justify-center items-center flex-wrap gap-8">
+                            <div class="text-center">
+                                <div class="w-24 h-24 bg-blue-200 rounded-full mx-auto mb-2 flex items-center justify-center">
+                                    <span class="text-blue-700 font-bold text-3xl">🪑</span>
+                                </div>
+                                <p class="font-bold text-gray-800">Dewan Pembina</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-24 h-24 bg-purple-200 rounded-full mx-auto mb-2 flex items-center justify-center">
+                                    <span class="text-purple-700 font-bold text-3xl">👨‍💼</span>
+                                </div>
+                                <p class="font-bold text-gray-800">Dewan Pengawas</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-24 h-24 bg-green-200 rounded-full mx-auto mb-2 flex items-center justify-center">
+                                    <span class="text-green-700 font-bold text-3xl">👩‍💻</span>
+                                </div>
+                                <p class="font-bold text-gray-800">Dewan Pengurus</p>
+                            </div>
+                        </div>
+                        <div class="text-center text-gray-600 mt-8">
+                            <p>Struktur organisasi kami dirancang untuk efektivitas dan transparansi dalam mencapai tujuan yayasan.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Tim Inti Kami</h3>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
+                            <div class="w-24 h-24 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-white font-bold text-2xl">DS</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Dr. Sari Wijaya</h3>
+                            <p class="text-blue-600 font-semibold mb-3">Ketua Yayasan</p>
+                            <p class="text-gray-600 text-sm">
+                                Dengan pengalaman 20+ tahun dalam pembangunan masyarakat, 
+                                memimpin visi strategis yayasan.
+                            </p>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
+                            <div class="w-24 h-24 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-white font-bold text-2xl">AR</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Ahmad Rahman</h3>
+                            <p class="text-purple-600 font-semibold mb-3">Direktur Program</p>
+                            <p class="text-gray-600 text-sm">
+                                Ahli dalam manajemen program sosial dengan fokus pada 
+                                pemberdayaan ekonomi masyarakat.
+                            </p>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
+                            <div class="w-24 h-24 bg-gradient-to-r from-green-400 to-green-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-white font-bold text-2xl">LM</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Lisa Maharani</h3>
+                            <p class="text-green-600 font-semibold mb-3">Manajer Keuangan</p>
+                            <p class="text-gray-600 text-sm">
+                                Bertanggung jawab atas transparansi dan akuntabilitas 
+                                keuangan yayasan.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Nilai-Nilai Kami</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">🤝</div>
+                            <h3 class="font-bold text-gray-800 mb-2">Integritas</h3>
+                            <p class="text-gray-600 text-sm">Berkomitmen pada transparansi dan akuntabilitas</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">💡</div>
+                            <h3 class="font-bold text-gray-800 mb-2">Inovasi</h3>
+                            <p class="text-gray-600 text-sm">Mengembangkan solusi kreatif untuk tantangan sosial</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">🌱</div>
+                            <h3 class="font-bold text-gray-800 mb-2">Berkelanjutan</h3>
+                            <p class="text-gray-600 text-sm">Fokus pada dampak jangka panjang</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">❤️</div>
+                            <h3 class="font-bold text-gray-800 mb-2">Empati</h3>
+                            <p class="text-gray-600 text-sm">Memahami kebutuhan masyarakat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="programs" class="section hidden-section">
+            <div class="container mx-auto px-4 py-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Program & Kegiatan</h2>
+                    <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Berbagai program inovatif yang dirancang untuk memberdayakan masyarakat dan menciptakan dampak positif yang berkelanjutan.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                        <div class="bg-gradient-to-r from-blue-400 to-blue-600 h-48 flex items-center justify-center">
+                            <div class="text-6xl text-white">📚</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Program Pendidikan</h3>
+                            <p class="text-gray-600 mb-4">
+                                Menyediakan akses pendidikan berkualitas melalui beasiswa, pelatihan guru, 
+                                dan pembangunan fasilitas sekolah.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-blue-600 font-semibold">1,200+ Penerima Manfaat</span>
+                                <button class="text-blue-600 hover:text-blue-800 font-semibold">Selengkapnya →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                        <div class="bg-gradient-to-r from-green-400 to-green-600 h-48 flex items-center justify-center">
+                            <div class="text-6xl text-white">💼</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Pemberdayaan Ekonomi</h3>
+                            <p class="text-gray-600 mb-4">
+                                Pelatihan keterampilan, bantuan modal usaha, dan pendampingan UMKM 
+                                untuk meningkatkan ekonomi keluarga.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-green-600 font-semibold">800+ UMKM Dibina</span>
+                                <button class="text-green-600 hover:text-green-800 font-semibold">Selengkapnya →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                        <div class="bg-gradient-to-r from-purple-400 to-purple-600 h-48 flex items-center justify-center">
+                            <div class="text-6xl text-white">🏛️</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Pelestarian Budaya</h3>
+                            <p class="text-gray-600 mb-4">
+                                Dokumentasi, revitalisasi, dan pelestarian warisan budaya lokal 
+                                untuk generasi mendatang.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-purple-600 font-semibold">50+ Tradisi Dilestarikan</span>
+                                <button class="text-purple-600 hover:text-purple-800 font-semibold">Selengkapnya →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Kegiatan Terbaru</h3>
+                    <div class="swiper activity-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="bg-white rounded-lg shadow-lg p-6">
+                                    <div class="bg-blue-100 rounded-lg h-40 mb-4 flex items-center justify-center">
+                                        <span class="text-4xl">🎓</span>
+                                    </div>
+                                    <h4 class="font-bold text-lg mb-2">Workshop Digital Marketing</h4>
+                                    <p class="text-gray-600 text-sm mb-3">15 Mei 2025</p>
+                                    <p class="text-gray-700">Pelatihan pemasaran digital untuk pelaku UMKM lokal dengan 50 peserta.</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="bg-white rounded-lg shadow-lg p-6">
+                                    <div class="bg-green-100 rounded-lg h-40 mb-4 flex items-center justify-center">
+                                        <span class="text-4xl">🌾</span>
+                                    </div>
+                                    <h4 class="font-bold text-lg mb-2">Program Pertanian Organik</h4>
+                                    <p class="text-gray-600 text-sm mb-3">10 Mei 2025</p>
+                                    <p class="text-gray-700">Pelatihan teknik pertanian organik untuk meningkatkan hasil panen berkelanjutan.</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="bg-white rounded-lg shadow-lg p-6">
+                                    <div class="bg-purple-100 rounded-lg h-40 mb-4 flex items-center justify-center">
+                                        <span class="text-4xl">🎭</span>
+                                    </div>
+                                    <h4 class="font-bold text-lg mb-2">Festival Budaya Nagari</h4>
+                                    <p class="text-gray-600 text-sm mb-3">5 Mei 2025</p>
+                                    <p class="text-gray-700">Acara tahunan pelestarian seni dan budaya tradisional dengan 1000+ pengunjung.</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="bg-white rounded-lg shadow-lg p-6">
+                                    <div class="bg-yellow-100 rounded-lg h-40 mb-4 flex items-center justify-center">
+                                        <span class="text-4xl">🤝</span>
+                                    </div>
+                                    <h4 class="font-bold text-lg mb-2">Kolaborasi Bersama Komunitas</h4>
+                                    <p class="text-gray-600 text-sm mb-3">1 Mei 2025</p>
+                                    <p class="text-gray-700">Membangun jembatan kerjasama dengan komunitas lokal untuk proyek baru.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination mt-8"></div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl text-white p-8">
+                    <h3 class="text-2xl font-bold mb-8 text-center">Pencapaian Kami</h3>
+                    <div class="grid md:grid-cols-4 gap-6 text-center">
+                        <div class="achievement-item">
+                            <div class="text-4xl font-bold mb-2">15+</div>
+                            <p class="text-blue-100">Tahun Pengalaman</p>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="text-4xl font-bold mb-2">2,500+</div>
+                            <p class="text-blue-100">Keluarga Terdampak</p>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="text-4xl font-bold mb-2">50+</div>
+                            <p class="text-blue-100">Program Berhasil</p>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="text-4xl font-bold mb-2">25</div>
+                            <p class="text-blue-100">Desa Binaan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="section hidden-section">
+            <div class="container mx-auto px-4 py-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Galeri</h2>
+                    <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Dokumentasi kegiatan dan pencapaian Yayasan Ulayat Nagari dalam membangun masyarakat.
+                    </p>
+                </div>
+
+                <div class="flex justify-center mb-8">
+                    <div class="bg-gray-100 rounded-lg p-1">
+                        <button onclick="showGalleryTab('photos')" id="photos-tab" class="gallery-tab px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold">
+                            Foto Kegiatan
+                        </button>
+                        <button onclick="showGalleryTab('videos')" id="videos-tab" class="gallery-tab px-6 py-2 rounded-lg text-gray-600 font-semibold hover:text-blue-600">
+                            Video
+                        </button>
+                    </div>
+                </div>
+
+                <div id="photos-gallery" class="gallery-content">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="gallery-item bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg h-64 flex items-center justify-center text-white cursor-pointer hover:scale-105 transition-transform duration-300">
+                            <div class="text-center">
+                                <div class="text-4xl mb-2">📚</div>
+                                <p class="font-semibold">Program Beasiswa</p>
+                                <p class="text-sm text-blue-100">50 Siswa Berprestasi</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item bg-gradient-to-br from-green-400 to-green-600 rounded-lg h-64 flex items-center justify-center text-white cursor-pointer hover:scale-105 transition-transform duration-300">
+                            <div class="text-center">
+                                <div class="text-4xl mb-2">🏗️</div>
+                                <p class="font-semibold">Pembangunan Sekolah</p>
+                                <p class="text-sm text-green-100">Desa Sumber Makmur</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg h-64 flex items-center justify-center text-white cursor-pointer hover:scale-105 transition-transform duration-300">
+                            <div class="text-center">
+                                <div class="text-4xl mb-2">🎭</div>
+                                <p class="font-semibold">Festival Budaya</p>
+                                <p class="text-sm text-purple-100">Pelestarian Tradisi</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg h-64 flex items-center justify-center text-white cursor-pointer hover:scale-105 transition-transform duration-300">
+                            <div class="text-center">
+                                <div class="text-4xl mb-2">💼</div>
+                                <p class="font-semibold">Pelatihan UMKM</p>
+                                <p class="text-sm text-yellow-100">Keterampilan Wirausaha</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item bg-gradient-to-br from-red-400 to-pink-500 rounded-lg h-64 flex items-center justify-center text-white cursor-pointer hover:scale-105 transition-transform duration-300">
+                            <div class="text-center">
+                                <div class="text-4xl mb-2">🏥</div>
+                                <p class="font-semibold">Program Kesehatan</p>
+                                <p class="text-sm text-red-100">Pelayanan Gratis</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-lg h-64 flex items-center justify-center text-white cursor-pointer hover:scale-105 transition-transform duration-300">
+                            <div class="text-center">
+                                <div class="text-4xl mb-2">🌱</div>
+                                <p class="font-semibold">Pertanian Organik</p>
+                                <p class="text-sm text-indigo-100">Ramah Lingkungan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="videos-gallery" class="gallery-content hidden">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-gray-900 rounded-lg p-8 text-white text-center">
+                            <div class="text-6xl mb-4">▶️</div>
+                            <h3 class="text-xl font-bold mb-2">Profil Yayasan</h3>
+                            <p class="text-gray-300 mb-4">Perjalanan 15 tahun Yayasan Ulayat Nagari</p>
+                            <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                                Tonton Video
+                            </button>
+                        </div>
+                        <div class="bg-gray-900 rounded-lg p-8 text-white text-center">
+                            <div class="text-6xl mb-4">🎬</div>
+                            <h3 class="text-xl font-bold mb-2">Dokumenter Program</h3>
+                            <p class="text-gray-300 mb-4">Dampak positif program pemberdayaan</p>
+                            <button class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition duration-300">
+                                Tonton Video
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="section hidden-section">
+            <div class="section-bg py-16">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Berita & Artikel</h2>
+                        <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Informasi terkini tentang kegiatan, prestasi, dan perkembangan Yayasan Ulayat Nagari.
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-12">
+                        <div class="md:flex">
+                            <div class="md:w-1/2 bg-gradient-to-br from-blue-500 to-purple-600 p-8 text-white flex items-center">
+                                <div>
+                                    <span class="bg-white bg-opacity-20 text-xs px-2 py-1 rounded-full">BERITA UTAMA</span>
+                                    <h3 class="text-2xl font-bold mt-4 mb-4">
+                                        Yayasan Ulayat Nagari Raih Penghargaan Pemberdayaan Masyarakat Terbaik 2025
+                                    </h3>
+                                    <p class="text-blue-100 mb-4">
+                                        Prestasi gemilang diraih dalam kategori inovasi program pemberdayaan ekonomi berkelanjutan.
+                                    </p>
+                                    <div class="flex items-center text-sm text-blue-100">
+                                        <span>📅 10 Juni 2025</span>
+                                        <span class="mx-2">•</span>
+                                        <span>👤 Admin</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2 p-8">
+                                <p class="text-gray-700 leading-relaxed mb-4">
+                                    Jakarta - Yayasan Ulayat Nagari berhasil meraih penghargaan "Pemberdayaan Masyarakat Terbaik 2025" 
+                                    dari Kementerian Sosial RI atas dedikasi dan inovasi program yang telah memberikan dampak nyata 
+                                    bagi masyarakat selama 15 tahun terakhir.
+                                </p>
+                                <p class="text-gray-700 leading-relaxed mb-6">
+                                    Penghargaan ini diberikan berdasarkan evaluasi komprehensif terhadap program-program pemberdayaan 
+                                    yang berkelanjutan dan berdampak luas pada peningkatan kesejahteraan masyarakat di 25 desa binaan.
+                                </p>
+                                <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                                    Baca Selengkapnya
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                        <article class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                            <div class="bg-green-100 h-48 flex items-center justify-center">
+                                <div class="text-6xl text-green-600">🌾</div>
+                            </div>
+                            <div class="p-6">
+                                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">PROGRAM</span>
+                                <h3 class="font-bold text-lg mt-2 mb-2">Sukses Program Pertanian Organik di 5 Desa</h3>
+                                <p class="text-gray-600 text-sm mb-3">5 Juni 2025</p>
+                                <p class="text-gray-700 text-sm">
+                                    Program pelatihan pertanian organik berhasil meningkatkan produktivitas petani hingga 40% dengan 
+                                    metode ramah lingkungan.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                            <div class="bg-blue-100 h-48 flex items-center justify-center">
+                                <div class="text-6xl text-blue-600">🎓</div>
+                            </div>
+                            <div class="p-6">
+                                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">PENDIDIKAN</span>
+                                <h3 class="font-bold text-lg mt-2 mb-2">100 Siswa Terima Beasiswa Pendidikan</h3>
+                                <p class="text-gray-600 text-sm mb-3">1 Juni 2025</p>
+                                <p class="text-gray-700 text-sm">
+                                    Penyaluran beasiswa untuk siswa berprestasi dari keluarga kurang mampu sebagai investasi 
+                                    masa depan bangsa.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                            <div class="bg-purple-100 h-48 flex items-center justify-center">
+                                <div class="text-6xl text-purple-600">🏛️</div>
+                            </div>
+                            <div class="p-6">
+                                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">BUDAYA</span>
+                                <h3 class="font-bold text-lg mt-2 mb-2">Pelestarian 10 Tradisi Lokal</h3>
+                                <p class="text-gray-600 text-sm mb-3">28 Mei 2025</p>
+                                <p class="text-gray-700 text-sm">
+                                    Dokumentasi dan revitalisasi tradisi lokal berhasil menghidupkan kembali warisan budaya 
+                                    yang hampir punah.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Siaran Pers Terbaru</h3>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                                <h4 class="font-bold text-xl text-gray-800 mb-3">Siaran Pers: Peluncuran Program Air Bersih di Desa Terpencil</h4>
+                                <p class="text-gray-600 text-sm mb-3">20 Mei 2025</p>
+                                <p class="text-gray-700 mb-4">
+                                    Yayasan Ulayat Nagari mengumumkan peluncuran inisiatif baru untuk menyediakan akses air bersih 
+                                    bagi 5 desa terpencil, berdampak pada 1,000+ jiwa.
+                                </p>
+                                <button class="text-blue-600 hover:text-blue-800 font-semibold">Unduh Siaran Pers (PDF) →</button>
+                            </div>
+                            <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                                <h4 class="font-bold text-xl text-gray-800 mb-3">Siaran Pers: Kemitraan Strategis dengan Organisasi Internasional</h4>
+                                <p class="text-gray-600 text-sm mb-3">15 April 2025</p>
+                                <p class="text-gray-700 mb-4">
+                                    Yayasan Ulayat Nagari menjalin kemitraan dengan Global Impact Fund untuk memperluas jangkauan 
+                                    program pemberdayaan di seluruh Indonesia.
+                                </p>
+                                <button class="text-blue-600 hover:text-blue-800 font-semibold">Unduh Siaran Pers (PDF) →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="text-2xl mr-4">📢</div>
+                            <div>
+                                <h3 class="font-bold text-yellow-800 mb-2">Pengumuman Penting</h3>
+                                <p class="text-yellow-700 mb-4">
+                                    <strong>Rekrutmen Relawan Baru:</strong> Kami membuka kesempatan bagi para relawan 
+                                    yang ingin bergabung dalam program pemberdayaan masyarakat. Pendaftaran dibuka hingga 30 Juni 2025.
+                                </p>
+                                <button onclick="showSection('contact')" class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition duration-300 text-sm">
+                                    Daftar Sekarang
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section hidden-section">
+            <div class="container mx-auto px-4 py-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Hubungi Kami</h2>
+                    <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Mari berkolaborasi untuk menciptakan perubahan positif. Hubungi kami untuk informasi lebih lanjut.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Kirim Pesan</h3>
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Nama Lengkap</label>
+                                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300" placeholder="Masukkan nama lengkap">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Email</label>
+                                    <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300" placeholder="email@example.com">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Nomor Telepon</label>
+                                <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300" placeholder="+62 xxx-xxxx-xxxx">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Subjek</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300">
+                                    <option>Pilih subjek</option>
+                                    <option>Informasi Program</option>
+                                    <option>Kerjasama</option>
+                                    <option>Donasi</option>
+                                    <option>Menjadi Relawan</option>
+                                    <option>Lainnya</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Pesan</label>
+                                <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300" placeholder="Tulis pesan Anda..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                                Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 rounded-lg p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-blue-100 p-3 rounded-full">
+                                    <div class="text-blue-600 text-xl">📍</div>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800 mb-2">Alamat Kantor</h3>
+                                    <p class="text-gray-700">
+                                        Jl. Pemuda No. 123, Kelurahan Sumber Makmur<br>
+                                        Kecamatan Nagari Indah, Kabupaten Berkah<br>
+                                        Provinsi Sejahtera 12345
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 rounded-lg p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-green-100 p-3 rounded-full">
+                                    <div class="text-green-600 text-xl">📞</div>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800 mb-2">Kontak</h3>
+                                    <p class="text-gray-700 mb-2">
+                                        <strong>Telepon:</strong> (021) 123-4567<br>
+                                        <strong>WhatsApp:</strong> +62 812-3456-7890<br>
+                                        <strong>Email:</strong> info@yayasanulayatnagari.org
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-50 rounded-lg p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-purple-100 p-3 rounded-full">
+                                    <div class="text-purple-600 text-xl">🕐</div>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800 mb-2">Jam Operasional</h3>
+                                    <p class="text-gray-700">
+                                        <strong>Senin - Jumat:</strong> 08:00 - 17:00<br>
+                                        <strong>Sabtu:</strong> 08:00 - 12:00<br>
+                                        <strong>Minggu:</strong> Tutup
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h3 class="font-bold text-gray-800 mb-4">Ikuti Kami</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition duration-300">
+                                    <span class="sr-only">Facebook</span>
+                                    <div class="text-sm">📘</div>
+                                </a>
+                                <a href="#" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition duration-300">
+                                    <span class="sr-only">Twitter</span>
+                                    <div class="text-sm">🐦</div>
+                                </a>
+                                <a href="#" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition duration-300">
+                                    <span class="sr-only">Instagram</span>
+                                    <div class="text-sm">📷</div>
+                                </a>
+                                <a href="#" class="bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition duration-300">
+                                    <span class="sr-only">YouTube</span>
+                                    <div class="text-sm">📺</div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="bg-red-50 rounded-lg p-6 border-l-4 border-red-400">
+                            <h3 class="font-bold text-red-800 mb-2">Kontak Darurat</h3>
+                            <p class="text-red-700">
+                                <strong>Hotline 24 Jam:</strong> +62 811-2345-6789<br>
+                                Untuk situasi mendesak dan bantuan darurat
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="donation" class="section hidden-section">
+            <div class="bg-gradient-to-br from-blue-50 to-purple-50 py-16">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Donasi & Dukungan</h2>
+                        <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Setiap kontribusi Anda membuat perbedaan nyata dalam kehidupan masyarakat yang membutuhkan.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8 mb-12">
+                        <div class="bg-white rounded-lg shadow-lg p-8 text-center card-hover">
+                            <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">🏦</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Transfer Bank</h3>
+                            <div class="text-left bg-gray-50 p-4 rounded-lg mb-4">
+                                <p class="text-sm text-gray-600 mb-2"><strong>Bank BCA</strong></p>
+                                <p class="text-lg font-mono">1234-5678-9012</p>
+                                <p class="text-sm text-gray-600 mt-2">a.n. Yayasan Ulayat Nagari</p>
+                            </div>
+                            <div class="text-left bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm text-gray-600 mb-2"><strong>Bank Mandiri</strong></p>
+                                <p class="text-lg font-mono">9876-5432-1098</p>
+                                <p class="text-sm text-gray-600 mt-2">a.n. Yayasan Ulayat Nagari</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-lg p-8 text-center card-hover">
+                            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">💳</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Donasi Online</h3>
+                            <p class="text-gray-600 mb-6">Donasi mudah melalui platform digital</p>
+                            <div class="space-y-3">
+                                <button class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-300">
+                                    GoPay / OVO
+                                </button>
+                                <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                                    DANA / LinkAja
+                                </button>
+                                <button class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition duration-300">
+                                    Kartu Kredit
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-lg p-8 text-center card-hover">
+                            <div class="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">📦</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Donasi Barang</h3>
+                            <p class="text-gray-600 mb-6">Sumbangkan barang yang masih layak pakai</p>
+                            <ul class="text-left text-gray-700 space-y-2 mb-6">
+                                <li>• Buku dan alat tulis</li>
+                                <li>• Pakaian layak pakai</li>
+                                <li>• Peralatan elektronik</li>
+                                <li>• Bahan makanan non-perishable</li>
+                            </ul>
+                            <button onclick="showSection('contact')" class="bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition duration-300">
+                                Hubungi Kami
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg p-8 mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Apa Kata Para Donatur Kami</h3>
+                        <div class="swiper testimonial-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="bg-gray-50 rounded-lg p-6 text-center">
+                                        <p class="text-gray-700 italic mb-4">
+                                            "Saya sangat bangga bisa menjadi bagian dari Yayasan Ulayat Nagari. Program-programnya 
+                                            sangat berdampak nyata dan transparan. Ini adalah tempat terbaik untuk menyalurkan kebaikan."
+                                        </p>
+                                        <p class="font-bold text-gray-800">- Budi Santoso</p>
+                                        <p class="text-gray-600 text-sm">Pengusaha & Donatur Tetap</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="bg-gray-50 rounded-lg p-6 text-center">
+                                        <p class="text-gray-700 italic mb-4">
+                                            "Melihat langsung bagaimana donasi saya membantu anak-anak di desa mendapatkan pendidikan 
+                                            yang layak adalah kebahagiaan tersendiri. Terima kasih YUN!"
+                                        </p>
+                                        <p class="font-bold text-gray-800">- Siti Aminah</p>
+                                        <p class="text-gray-600 text-sm">Ibu Rumah Tangga & Relawan</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="bg-gray-50 rounded-lg p-6 text-center">
+                                        <p class="text-gray-700 italic mb-4">
+                                            "Yayasan ini memiliki komitmen yang kuat terhadap pelestarian budaya. Saya sangat 
+                                            mendukung upaya mereka dalam menjaga warisan leluhur kita."
+                                        </p>
+                                        <p class="font-bold text-gray-800">- Pak Made</p>
+                                        <p class="text-gray-600 text-sm">Budayawan & Donatur</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination mt-8"></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-600 text-white rounded-lg p-8 text-center">
+                        <h3 class="text-2xl font-bold mb-4">Jadi Relawan Kami!</h3>
+                        <p class="text-xl mb-8 max-w-2xl mx-auto">
+                            Wujudkan kepedulian Anda dengan menjadi bagian dari tim relawan kami. Tenaga dan waktu Anda sangat berarti!
+                        </p>
+                        <button onclick="showSection('contact')" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                            Daftar Jadi Relawan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="section hidden-section">
+            <div class="container mx-auto px-4 py-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Pertanyaan Umum (FAQ)</h2>
+                    <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Temukan jawaban atas pertanyaan yang sering diajukan seputar Yayasan Ulayat Nagari.
+                    </p>
+                </div>
+
+                <div class="max-w-3xl mx-auto space-y-6">
+                    <div class="bg-white rounded-lg shadow-lg p-6 cursor-pointer" onclick="toggleFaq(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-bold text-lg text-gray-800">Apa itu Yayasan Ulayat Nagari?</h3>
+                            <svg class="w-6 h-6 text-blue-600 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer hidden mt-4 text-gray-700">
+                            Yayasan Ulayat Nagari adalah organisasi non-profit yang berfokus pada pemberdayaan masyarakat, 
+                            pendidikan, dan pelestarian budaya lokal di seluruh Indonesia.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg p-6 cursor-pointer" onclick="toggleFaq(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-bold text-lg text-gray-800">Bagaimana cara saya bisa berdonasi?</h3>
+                            <svg class="w-6 h-6 text-blue-600 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer hidden mt-4 text-gray-700">
+                            Anda dapat berdonasi melalui transfer bank ke rekening BCA atau Mandiri kami, 
+                            atau melalui platform donasi online seperti GoPay, OVO, DANA, LinkAja, atau kartu kredit. 
+                            Informasi detail dapat dilihat di halaman Donasi & Dukungan.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg p-6 cursor-pointer" onclick="toggleFaq(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-bold text-lg text-gray-800">Apakah saya bisa menjadi relawan?</h3>
+                            <svg class="w-6 h-6 text-blue-600 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer hidden mt-4 text-gray-700">
+                            Tentu saja! Kami sangat menyambut kehadiran relawan baru. Anda bisa mendaftar sebagai relawan 
+                            melalui formulir di halaman Kontak atau Donasi & Dukungan.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg p-6 cursor-pointer" onclick="toggleFaq(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-bold text-lg text-gray-800">Bagaimana Yayasan menjamin transparansi dana?</h3>
+                            <svg class="w-6 h-6 text-blue-600 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="faq-answer hidden mt-4 text-gray-700">
+                            Kami berkomitmen pada transparansi penuh. Laporan keuangan tahunan kami diaudit secara independen 
+                            dan dapat diakses di bagian Berita & Artikel atau dengan menghubungi kami langsung.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Kebijakan Privasi</h3>
+                    <div class="bg-gray-100 rounded-lg p-8 max-w-4xl mx-auto text-left">
+                        <p class="text-gray-700 mb-4">
+                            Yayasan Ulayat Nagari sangat menghargai privasi data pengunjung dan donatur. 
+                            Kami berkomitmen untuk melindungi informasi pribadi yang Anda berikan kepada kami.
+                        </p>
+                        <p class="text-gray-700 mb-4">
+                            Informasi yang kami kumpulkan (seperti nama, email, nomor telepon) hanya digunakan untuk 
+                            tujuan komunikasi terkait program dan kegiatan yayasan, serta untuk proses donasi. 
+                            Kami tidak akan menjual, menyewakan, atau mendistribusikan informasi pribadi Anda kepada pihak ketiga 
+                            tanpa persetujuan Anda, kecuali diwajibkan oleh hukum.
+                        </p>
+                        <p class="text-gray-700">
+                            Dengan menggunakan website ini, Anda menyetujui pengumpulan dan penggunaan informasi 
+                            sesuai dengan Kebijakan Privasi ini. Jika ada perubahan dalam kebijakan kami, kami akan 
+                            memberitahukannya di halaman ini.
+                        </p>
+                        <a href="#" class="inline-block mt-6 text-blue-600 hover:underline font-semibold">Baca Kebijakan Privasi Lengkap →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">Yayasan Ulayat Nagari</h3>
+                <p class="text-gray-400 text-sm mb-4">
+                    Membangun Masa Depan Bersama. Kami berkomitmen untuk memberdayakan masyarakat melalui pendidikan, 
+                    ekonomi, dan pelestarian budaya.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <span class="sr-only">Facebook</span>
+                        <i class="fab fa-facebook-f text-lg"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <span class="sr-only">Twitter</span>
+                        <i class="fab fa-twitter text-lg"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <span class="sr-only">Instagram</span>
+                        <i class="fab fa-instagram text-lg"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <span class="sr-only">YouTube</span>
+                        <i class="fab fa-youtube text-lg"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4">Tautan Cepat</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" onclick="showSection('about')" class="text-gray-400 hover:text-white transition duration-300">Tentang Kami</a></li>
+                    <li><a href="#" onclick="showSection('programs')" class="text-gray-400 hover:text-white transition duration-300">Program</a></li>
+                    <li><a href="#" onclick="showSection('donation')" class="text-gray-400 hover:text-white transition duration-300">Donasi</a></li>
+                    <li><a href="#" onclick="showSection('gallery')" class="text-gray-400 hover:text-white transition duration-300">Galeri</a></li>
+                    <li><a href="#" onclick="showSection('news')" class="text-gray-400 hover:text-white transition duration-300">Berita</a></li>
+                    <li><a href="#" onclick="showSection('faq')" class="text-gray-400 hover:text-white transition duration-300">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4">Kontak Kami</h3>
+                <p class="text-gray-400 text-sm mb-2">Jl. Pemuda No. 123, Kelurahan Sumber Makmur, Nagari Indah</p>
+                <p class="text-gray-400 text-sm mb-2">Telepon: (021) 123-4567</p>
+                <p class="text-gray-400 text-sm mb-4">Email: info@yayasanulayatnagari.org</p>
+                <p class="text-gray-500 text-xs">&copy; 2025 Yayasan Ulayat Nagari. Semua Hak Dilindungi.</p>
+                <p class="text-gray-500 text-xs mt-1">
+                    Didukung oleh Komunitas Lokal & Donatur Dermawan.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Function to show/hide sections
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.add('hidden-section');
+            });
+            document.getElementById(sectionId).classList.remove('hidden-section');
+
+            // Update active navigation link
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('nav-active', 'bg-blue-600', 'text-white');
+                link.classList.add('text-gray-700'); // Reset to default
+                if (link.textContent.toLowerCase().includes(sectionId.toLowerCase().replace('home', 'beranda').replace('donation', 'donasi').replace('faq', 'faq')) ||
+                    (sectionId === 'donation' && link.textContent.toLowerCase().includes('donasi')) // Special handling for donation
+                ) {
+                    if (link.classList.contains('mobile-nav-link') || link.classList.contains('nav-link')) { // Exclude donation button from default style
+                        link.classList.add('nav-active');
+                    }
+                }
+            });
+            // Reapply donation button style
+            document.querySelector('.nav-link[onclick="showSection(\'donation\')"]').classList.add('bg-blue-600', 'text-white', 'rounded-lg');
+            document.querySelector('.mobile-nav-link[onclick="showSection(\'donation\')"]').classList.add('bg-blue-600', 'text-white', 'rounded');
+
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+
+            // Animate content on section change (Anime.js)
+            anime({
+                targets: `#${sectionId} h2, #${sectionId} h3, #${sectionId} p, #${sectionId} .card-hover, #${sectionId} .gallery-item, #${sectionId} .achievement-item, #${sectionId} .faq-answer`,
+                opacity: [0, 1],
+                translateY: [20, 0],
+                delay: anime.stagger(100),
+                easing: 'easeOutQuad'
+            });
+        }
+
+        // Initialize Swiper for Activities
+        const activitySwiper = new Swiper('.activity-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                },
+            },
+        });
+
+        // Initialize Swiper for Testimonials
+        const testimonialSwiper = new Swiper('.testimonial-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+            },
+        });
+
+        // Hero section entrance animation (Anime.js)
+        anime({
+            targets: '.hero-title, .hero-subtitle, .hero-buttons',
+            opacity: [0, 1],
+            translateY: [50, 0],
+            delay: anime.stagger(200, {start: 500}),
+            easing: 'easeOutExpo'
+        });
+
+        // Floating background elements animation (Anime.js)
+        anime({
+            targets: '.floating-element',
+            translateY: function() {
+                return anime.random(-20, 20);
+            },
+            translateX: function() {
+                return anime.random(-20, 20);
+            },
+            scale: function() {
+                return anime.random(0.8, 1.2);
+            },
+            rotate: function() {
+                return anime.random(0, 360);
+            },
+            loop: true,
+            direction: 'alternate',
+            duration: function() {
+                return anime.random(4000, 8000);
+            },
+            easing: 'easeInOutQuad'
+        });
+
+        // Gallery tab switching
+        function showGalleryTab(tabId) {
+            const galleryContents = document.querySelectorAll('.gallery-content');
+            galleryContents.forEach(content => {
+                content.classList.add('hidden');
+            });
+            document.getElementById(`${tabId}-gallery`).classList.remove('hidden');
+
+            const galleryTabs = document.querySelectorAll('.gallery-tab');
+            galleryTabs.forEach(tab => {
+                tab.classList.remove('bg-blue-600', 'text-white');
+                tab.classList.add('text-gray-600', 'hover:text-blue-600');
+            });
+            document.getElementById(`${tabId}-tab`).classList.remove('text-gray-600', 'hover:text-blue-600');
+            document.getElementById(`${tabId}-tab`).classList.add('bg-blue-600', 'text-white');
+        }
+
+        // Toggle FAQ answers
+        function toggleFaq(element) {
+            const answer = element.querySelector('.faq-answer');
+            const icon = element.querySelector('svg');
+            
+            if (answer.classList.contains('hidden')) {
+                anime({
+                    targets: answer,
+                    height: ['0px', 'auto'],
+                    opacity: [0, 1],
+                    easing: 'easeOutQuad',
+                    duration: 300,
+                    begin: function(anim) {
+                        answer.style.display = 'block';
+                    }
+                });
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                anime({
+                    targets: answer,
+                    height: ['auto', '0px'],
+                    opacity: [1, 0],
+                    easing: 'easeOutQuad',
+                    duration: 300,
+                    complete: function(anim) {
+                        answer.style.display = 'hidden';
+                    }
+                });
+                icon.style.transform = 'rotate(0deg)';
+            }
+            answer.classList.toggle('hidden');
+        }
+
+        // Initial section display
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('home');
+        });
+
+    </script>
+</body>
+</html>
